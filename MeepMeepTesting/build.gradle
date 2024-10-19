@@ -1,5 +1,8 @@
 plugins {
     id 'java-library'
+    id "java"
+    id "war"
+    id "org.teavm" version "0.10.2"
 }
 
 java {
@@ -8,8 +11,18 @@ java {
 }
 repositories {
     maven { url = 'https://maven.brott.dev/' }
+    mavenCentral()
 }
 
 dependencies {
     implementation 'com.acmerobotics.roadrunner:MeepMeep:0.1.6'
+    implementation teavm.libs.jsoApis
+}
+
+teavm.js {
+    addedToWebApp = true
+    mainClass = "example.MainClass"
+
+    // this is also optional, default value is <project name>.js
+    targetFileName = "example.js"
 }
