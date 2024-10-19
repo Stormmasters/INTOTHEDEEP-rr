@@ -3,6 +3,11 @@
  *
  * It is extraordinarily rare that you will ever need to edit this file.
  */
+plugins {
+    id "java"
+    id "war"
+    id "org.teavm" version "0.10.2"
+}
 
 buildscript {
     repositories {
@@ -26,4 +31,14 @@ allprojects {
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    implementation teavm.libs.jsoApis
+}
+
+teavm.js {
+    addedToWebApp = true
+    mainClass = "example.MainClass"
+    targetFileName = "example.js"
 }
